@@ -23,6 +23,28 @@ You`ll need : <br>
 - ``vorp_progressbar`` <br>
 - ``vorp_animations`` <br>
 
+you have to add one animation to the vorp_animations config.lua
+``
+    ["carry_box"] = {
+        dict = "mech_carry_box",
+        name = "idle", 
+        flag = 31,
+        type = 'standard',
+        prop = {
+            model = 'p_chair_crate02x',
+            coords = {
+                x = 0.1, 
+                y = -0.1399, 
+                z = 0.21, 
+                xr = 263.2899,
+                yr = 619.19,
+                zr = 334.3
+            },
+            bone = 'SKEL_L_Hand'
+        }
+    },
+``
+
 # Support
 
 If you want to support me, you can do this here: <br>
