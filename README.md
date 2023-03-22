@@ -1,7 +1,10 @@
 # juSa_carrier_job (v.1.1)
-A script that allows you to create NPCs and assign various functions to them. <br>
-You can create NPCs with one of the following functions:
+This script allows players to perform a carrier job at the port of Saint Denis.<br>
+As a reward you can set the amount of money or which items you get and the chance for getting items or money.
 
+Youtube Video: <br>
+[![Watch the video](https://img.youtube.com/vi/Edc4nzMxJ9c/3.jpg)](https://youtu.be/Edc4nzMxJ9c)
+<br>
 
 ------------------<br>
 
@@ -13,12 +16,12 @@ You can create NPCs with one of the following functions:
 Currently this script only works with VORP.
 
 # Requirements
-You`ll need :
-``vorp_core``
-``vorp_api``
-``vorp_inventory``
-``vorp_progressbar``
-``vorp_animations``
+You`ll need : <br>
+- ``vorp_core`` <br>
+- ``vorp_api`` <br>
+- ``vorp_inventory`` <br>
+- ``vorp_progressbar`` <br>
+- ``vorp_animations`` <br>
 
 # Support
 
