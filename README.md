@@ -23,7 +23,7 @@ You`ll need : <br>
 - ``vorp_progressbar`` <br>
 - ``vorp_animations`` <br>
 
-you have to add one animation to the vorp_animations config.lua
+you have to add one animation to the vorp_animations config.lua (or update your vorp_animations):
 ``
     ["carry_box"] = {
         dict = "mech_carry_box",
