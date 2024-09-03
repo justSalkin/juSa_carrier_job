@@ -1,16 +1,21 @@
--- LAST EDIT by just_Salkin 22.03.2023 | WHITE-SANDS-RP german RP server
--- Version 1.1
 Config = {}
-
 Config.taskbar = 3000 --Interaction takes 3sec
 
 ------------------- Change this -----------------
 
-Config.Chance = 50 -- lower number = more chance to get money insted of an item
+Config.Chance = 90 -- lower number = more chance to get money insted of an item
 
-Config.moneyrewardmin = 2 -- min amount of rewarded money
-Config.moneyrewardmax = 10 -- max amount money
--- The Money_Reward value is divided by 10, so that amounts under $1 are also possible.
+Config.moneyrewardmin = 1 -- min amount of rewarded money
+Config.moneyrewardmax = 4 -- max amount money
+-- The money reward value is divided by 10, so that amounts under $1 are also possible.
+
+Config.applyJobSpecifications = false --set true if u want to permit or restrict players with/without jobs
+Config.jobRestriction = { --states that players with these jobs are not allowed to work | leave blank if you do not want any restrictions
+    { name = "police", grade = 2 }, --player with police job with grade 3 or higher are still allowed to work
+}
+Config.jobPermission = { --specifies which job players need to have in order to be allowed to work | leave blank if you do not want any restrictions
+    { name = "sheriff", grade = 2 }, --players need one of these jobs, for example sheriff and at least grade 2
+}
 
 Config.reward = {
     { item = "coal", name = "coal", rewardmin = 1, rewardmax = 3},
@@ -46,7 +51,8 @@ Config.Language = {
     clocked_out = "you have been clocked out",
     notify_clocked_in = "you have been clocked in",
     notify_clocked_out = "you have been clocked out",
-    reward = "You got"
+    reward = "You got",
+    notallowed = "Your job does not allow you to work here."
 }
 ------------------- Interaction -----------------
 Config.keys = {

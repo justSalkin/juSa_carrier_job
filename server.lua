@@ -1,8 +1,43 @@
 VorpCore = {}
 local VorpInv = exports.vorp_inventory:vorp_inventoryApi()
+-- local VORP_API = exports.vorp_core:vorpAPI()
 
 TriggerEvent("getCore",function(core)
     VorpCore = core
+end)
+
+RegisterServerEvent('juSa_carrier_job:checkJob')
+AddEventHandler('juSa_carrier_job:checkJob', function()
+    local _source = source
+    local Character = VorpCore.getUser(_source).getUsedCharacter
+    local job = Character.job
+    local grade = Character.jobGrade
+    local isrestricted = false
+    local ispermitted = false
+    
+    if #Config.jobRestriction > 0 then
+        for i, v in ipairs(Config.jobRestriction) do
+            if v.name == job then
+                if v.grade >= grade then
+                    isrestricted = true
+                end
+            end
+        end
+    end
+    
+    if #Config.jobPermission > 0 then
+        for i, v in ipairs(Config.jobPermission) do
+            if v.name == job then
+                if v.grade <= grade then
+                    ispermitted = true
+                end
+            end
+        end
+    else 
+        ispermitted = true
+    end
+
+    TriggerClientEvent("juSa_carrier_job:jobchecked", _source, isrestricted, ispermitted)
 end)
 
 RegisterServerEvent("juSa_carrier_job:givereward")
