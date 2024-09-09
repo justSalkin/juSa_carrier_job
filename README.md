@@ -3,7 +3,7 @@ This script allows players to perform a carrier job at the port of Saint Denis.<
 As a reward you can set the amount of money or which items you get and the chance for getting items or money.
 
 Youtube Video: <br>
-[![Watch the video](https://i.ibb.co/qrvQLjP/maxresdefault.jpg)](https://www.youtube.com/watch?v=kReQVO-4TBI)
+[![Watch the video]([https://www.youtube.com/watch?v=kReQVO-4TBI](https://www.youtube.com/watch?v=Edc4nzMxJ9c))]
 <br>
 ------------------<br>
 
