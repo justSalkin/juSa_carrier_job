@@ -1,8 +1,6 @@
 local prompts = GetRandomIntInRange(0, 0xffffff)
 
-local VorpCore = {}
-local VORPInv = {}
-
+local Core = exports.vorp_core:GetCore()
 
 local working = false
 local hasPackage = false
@@ -15,9 +13,7 @@ local Animations = exports.vorp_animations.initiate()
 local PlayerIsRestricted = false
 local PlayerIsPermitted = false
 
-TriggerEvent("getCore",function(core)
-    VorpCore = core
-end)
+local disableSprintandJump = false
 
 RegisterNetEvent("vorp:SelectedCharacter")
 AddEventHandler("vorp:SelectedCharacter", function(charid)
@@ -93,17 +89,15 @@ Citizen.CreateThread(function()
                                     if working == false then
                                         working = true
                                         TaskStartScenarioInPlace(playerPed, GetHashKey("WORLD_HUMAN_BADASS"), Config.taskbar, true, false, false, false) --Taskbar-Animation (change the text in "" if u want to have another animation instead)
-                                        --exports['progressBars']:startUI(Config.taskbar, Config.Language.task_clocking_in)
                                         progressbar.start(Config.Language.task_clocking_in, Config.taskbar,function ()end, 'linear')
                                         Citizen.Wait(Config.taskbar)
                                         TriggerEvent('vorp:NotifyLeft', Config.Language.jobname, Config.Language.clocked_in, "BLIPS", "blip_chest", 4000, "COLOR_GREEN")
                                         MarkerPosition = math.random(6)
                                         Citizen.Wait(500)
-                                        VorpCore.NotifyRightTip(Config.Language.get_package,10000)
+                                        Core.NotifyRightTip(Config.Language.get_package,10000)
                                     else
                                         working = false
                                         TaskStartScenarioInPlace(playerPed, GetHashKey("WORLD_HUMAN_BADASS"), Config.taskbar, true, false, false, false) --Taskbar-Animation (change the text in "" if u want to have another animation instead)
-                                        --exports['progressBars']:startUI(Config.taskbar, Config.Language.task_clocking_out)
                                         progressbar.start(Config.Language.task_clocking_out, Config.taskbar,function ()end, 'linear')
                                         Citizen.Wait(Config.taskbar)
                                         TriggerEvent('vorp:NotifyLeft', Config.Language.jobname, Config.Language.clocked_out, "BLIPS", "blip_destroy", 4000, "COLOR_RED")
@@ -119,17 +113,15 @@ Citizen.CreateThread(function()
                                 if working == false then
                                     working = true
                                     TaskStartScenarioInPlace(playerPed, GetHashKey("WORLD_HUMAN_BADASS"), Config.taskbar, true, false, false, false) --Taskbar-Animation (change the text in "" if u want to have another animation instead)
-                                    --exports['progressBars']:startUI(Config.taskbar, Config.Language.task_clocking_in)
                                     progressbar.start(Config.Language.task_clocking_in, Config.taskbar,function ()end, 'linear')
                                     Citizen.Wait(Config.taskbar)
                                     TriggerEvent('vorp:NotifyLeft', Config.Language.jobname, Config.Language.clocked_in, "BLIPS", "blip_chest", 4000, "COLOR_GREEN")
                                     MarkerPosition = math.random(6)
                                     Citizen.Wait(500)
-                                    VorpCore.NotifyRightTip(Config.Language.get_package,10000)
+                                    Core.NotifyRightTip(Config.Language.get_package,10000)
                                 else
                                     working = false
                                     TaskStartScenarioInPlace(playerPed, GetHashKey("WORLD_HUMAN_BADASS"), Config.taskbar, true, false, false, false) --Taskbar-Animation (change the text in "" if u want to have another animation instead)
-                                    --exports['progressBars']:startUI(Config.taskbar, Config.Language.task_clocking_out)
                                     progressbar.start(Config.Language.task_clocking_out, Config.taskbar,function ()end, 'linear')
                                     Citizen.Wait(Config.taskbar)
                                     TriggerEvent('vorp:NotifyLeft', Config.Language.jobname, Config.Language.clocked_out, "BLIPS", "blip_destroy", 4000, "COLOR_RED")
@@ -147,6 +139,25 @@ Citizen.CreateThread(function()
                         Wait(500)
                         Citizen.Wait(1000)
                     end
+                end
+            end
+        end
+        if Config.disallow_sprint_and_jump then
+            if disableSprintandJump then
+                if IsPedSprinting(PlayerPedId()) then  
+                    Citizen.InvokeNative(0xAE99FB955581844A, PlayerPedId(), 1500, 2000, 0, false, false, false)
+                    if Config.show_disallow_tip then
+                        Core.NotifyRightTip(Config.Language.dontRun, 4000)
+                    end
+                    Wait(2500)
+                    Animations.startAnimation("carry_box") --set carrying box anim again after fall
+                elseif IsPedJumping(PlayerPedId()) then
+                    Citizen.InvokeNative(0xAE99FB955581844A, PlayerPedId(), 1500, 2000, 0, false, false, false)
+                    if Config.show_disallow_tip then
+                        Core.NotifyRightTip(Config.Language.dontJump, 4000)
+                    end
+                    Wait(2500)
+                    Animations.startAnimation("carry_box") --set carrying box anim again after fall
                 end
             end
         end
@@ -236,6 +247,7 @@ Citizen.CreateThread(function()
                 ResetPlayerInputGait(PlayerPedId())
                 MarkerPosition = math.random(6) --new random markerposition/pickup location
                 messagenextpackage()
+                disableSprintandJump = false
             end
         end
     end
@@ -248,17 +260,16 @@ function pickupPackage()
         TaskStartScenarioInPlace(PlayerPedId(), GetHashKey("WORLD_HUMAN_CROUCH_INSPECT"), Config.taskbar, true, false, false, false)
         progressbar.start(Config.Language.picking_package, Config.taskbar,function ()end, 'linear')
         Citizen.Wait(Config.taskbar)
-
         Animations.startAnimation("carry_box")
-
-        VorpCore.NotifyRightTip(Config.Language.bring_package,10000)
+        disableSprintandJump = true
+        Core.NotifyRightTip(Config.Language.bring_package,10000)
         MarkerPosition = 9
     end
 end
 
 function messagenextpackage()
     Citizen.Wait(1500)
-    VorpCore.NotifyRightTip(Config.Language.get_package,10000)
+    Core.NotifyRightTip(Config.Language.get_package,10000)
 end
 
 function Anim(actor, dict, body, duration, flags, introtiming, exittiming)
