@@ -4,6 +4,8 @@ Config.taskbar = 3000 --Interaction takes 3sec
 ------------------- Change this -----------------
 
 Config.Chance = 90 -- lower number = more chance to get money insted of an item
+Config.disallow_sprint_and_jump = true --if true, players are not allowed to run or jump while carrying a package
+Config.show_disallow_tip = true --if true, players trying to jump or run will get an info about disallow
 
 Config.moneyrewardmin = 1 -- min amount of rewarded money
 Config.moneyrewardmax = 4 -- max amount money
@@ -52,7 +54,9 @@ Config.Language = {
     notify_clocked_in = "you have been clocked in",
     notify_clocked_out = "you have been clocked out",
     reward = "You got",
-    notallowed = "Your job does not allow you to work here."
+    notallowed = "Your job does not allow you to work here.",
+    dontJump = "Mit schweren Paketen solltest du nicht springen, sonst fällst du hin.",
+    dontRun = "Mit schweren Paketen solltest du nicht schnell laufen, sonst fällst du hin.",
 }
 ------------------- Interaction -----------------
 Config.keys = {
