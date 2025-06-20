@@ -55,8 +55,8 @@ Config.Language = {
     notify_clocked_out = "you have been clocked out",
     reward = "You got",
     notallowed = "Your job does not allow you to work here.",
-    dontJump = "Mit schweren Paketen solltest du nicht springen, sonst fällst du hin.",
-    dontRun = "Mit schweren Paketen solltest du nicht schnell laufen, sonst fällst du hin.",
+    dontJump = "You should not jump with heavy packages, otherwise you will fall.",
+    dontRun = "You should not run with heavy packages, otherwise you will fall.",
 }
 ------------------- Interaction -----------------
 Config.keys = {
