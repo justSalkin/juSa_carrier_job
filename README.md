@@ -3,8 +3,9 @@ This script allows players to perform a carrier job at the port of Saint Denis.<
 As a reward you can set the amount of money or which items you get and the chance for getting items or money.
 
 Youtube Video: <br>
-[![Watch the video]([https://www.youtube.com/watch?v=kReQVO-4TBI](https://www.youtube.com/watch?v=Edc4nzMxJ9c))]
+[![Watch the video](https://github.com/user-attachments/assets/5fc3b372-05e5-41ef-83e3-ea25d5f5c290)](https://www.youtube.com/watch?v=Edc4nzMxJ9c)
 <br>
+
 ------------------<br>
 
 1) Add ``juSa_carrier_job`` to your resources folder
@@ -50,5 +51,9 @@ If you want to support me, you can do this here: <br>
 https://www.buymeacoffee.com/justSalkin
 
 # Changelog
+
+Version update 1.3: <br>
+- Core Import updated to latest call <br>
+- added new config option that prevents players from running and jumping when carrying a package <br>
 
 Hope you enjoying working with the script :)
