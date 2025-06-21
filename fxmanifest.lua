@@ -4,7 +4,7 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 
 author 'justSalkin'
 description 'Script for the carrier job'
-version '1.3'
+version '1.3.1'
 
 
 client_script {
