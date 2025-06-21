@@ -104,6 +104,7 @@ Citizen.CreateThread(function()
                                         MarkerPosition = 0
                                         Citizen.Wait(500)
                                         hasPackage = false
+                                        disableSprintandJump = false
                                         Animations.endAnimation("carry_box")
                                     end
                                 else
@@ -128,6 +129,7 @@ Citizen.CreateThread(function()
                                     MarkerPosition = 0
                                     Citizen.Wait(500)
                                     hasPackage = false
+                                    disableSprintandJump = false
                                     Animations.endAnimation("carry_box")
                                 end
                             end
