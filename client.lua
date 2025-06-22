@@ -148,18 +148,22 @@ Citizen.CreateThread(function()
             if disableSprintandJump then
                 if IsPedSprinting(PlayerPedId()) then  
                     Citizen.InvokeNative(0xAE99FB955581844A, PlayerPedId(), 1500, 2000, 0, false, false, false)
+                    Animations.endAnimation("carry_box")
                     if Config.show_disallow_tip then
                         Core.NotifyRightTip(Config.Language.dontRun, 4000)
                     end
                     Wait(2500)
-                    Animations.startAnimation("carry_box") --set carrying box anim again after fall
+                    ClearPedTasksImmediately(PlayerPedId())
+                    Animations.startAnimation("carry_box") --set carrying box anim again after fall 
                 elseif IsPedJumping(PlayerPedId()) then
                     Citizen.InvokeNative(0xAE99FB955581844A, PlayerPedId(), 1500, 2000, 0, false, false, false)
+                    Animations.endAnimation("carry_box")
                     if Config.show_disallow_tip then
                         Core.NotifyRightTip(Config.Language.dontJump, 4000)
                     end
                     Wait(2500)
-                    Animations.startAnimation("carry_box") --set carrying box anim again after fall
+                    ClearPedTasksImmediately(PlayerPedId())
+                    Animations.startAnimation("carry_box") --set carrying box anim again after fall 
                 end
             end
         end
@@ -238,6 +242,7 @@ Citizen.CreateThread(function()
             Citizen.InvokeNative(0x2A32FAA57B937173, -1795314153, x, y, z, 0, 0, 0, 0, 0, 0, 2.5, 2.5, 1.5, 206, 45, 45, 120, 0, 0, 2, 0, 0, 0, 0)
             if Vdist(playerCoords, Config.Marker_9_coords) <= 2 and hasPackage == true then
                 hasPackage = false
+                disableSprintandJump = false
                 Animations.endAnimation("carry_box")
                 ClearPedTasksImmediately(PlayerPedId())
                 ResetPlayerInputGait(PlayerPedId())
@@ -249,7 +254,6 @@ Citizen.CreateThread(function()
                 ResetPlayerInputGait(PlayerPedId())
                 MarkerPosition = math.random(6) --new random markerposition/pickup location
                 messagenextpackage()
-                disableSprintandJump = false
             end
         end
     end
