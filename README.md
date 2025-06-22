@@ -1,4 +1,4 @@
-# juSa_carrier_job (v.1.3.1)
+# juSa_carrier_job (v.1.3.2)
 This script allows players to perform a carrier job at the port of Saint Denis.<br>
 As a reward you can set the amount of money or which items you get and the chance for getting items or money.
 
@@ -51,6 +51,8 @@ If you want to support me, you can do this here: <br>
 https://www.buymeacoffee.com/justSalkin
 
 # Changelog
+Bugfix V1.3.2 <br>
+- fixed animation was not finished correctly (now for real)
 
 Bugfix V1.3.1 <br>
 - fixed animation was not finished correctly
